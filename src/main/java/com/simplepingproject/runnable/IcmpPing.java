@@ -31,7 +31,7 @@ public class IcmpPing implements Runnable {
 	            // construct command for Linux and OSX
 	            strCommand = "ping -c 1 " + this.host;
 	        }
-	        System.out.println("Command: " + strCommand);
+	        logger.info("Command: " + strCommand);
 	        // Execute the command constructed
 	        Process myProcess = Runtime.getRuntime().exec(strCommand);
 	        myProcess.waitFor();
