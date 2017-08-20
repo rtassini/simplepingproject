@@ -1,9 +1,6 @@
 package com.simplepingproject.runnable;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import static org.junit.Assert.fail;
 
 import org.junit.After;
 import org.junit.Test;
