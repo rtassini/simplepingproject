@@ -14,6 +14,7 @@ public class IcmpPing implements Runnable {
 	private static final Logger logger = LoggerFactory.getLogger(IcmpPing.class);
 	
 	private String host = "";
+	private int pingResult; 
 	
 	public IcmpPing(String host) {
 		this.host = host;
@@ -43,11 +44,9 @@ public class IcmpPing implements Runnable {
 		        logger.info("Command: " + strCommand);
 		        Process myProcess = Runtime.getRuntime().exec(strCommand);
 		        myProcess.waitFor();
-		        if(myProcess.exitValue() == 0) {
-		        	logger.info("true");
-		        } else {
-		        	logger.info("false");
-		        }
+		        
+		        this.pingResult = myProcess.exitValue();
+		        
 		        try{
 	        		Thread.sleep(Long.parseLong(PropertiesReadUtil.propertyRead("delay")));
 	        	}catch(InterruptedException e){
@@ -59,6 +58,14 @@ public class IcmpPing implements Runnable {
 	        logger.error(e.getMessage());
 	        throw e;
 	    }
+	}
+
+	public int getPingResult() {
+		return pingResult;
+	}
+
+	public void setPingResult(int pingResult) {
+		this.pingResult = pingResult;
 	}
 
 }
