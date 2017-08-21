@@ -1,7 +1,6 @@
 package com.simplepingproject.rest;
 
 import java.util.List;
-import java.util.Scanner;
 
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -25,8 +24,7 @@ public class Report {
 		
 	@SuppressWarnings("finally")
 	@POST
-	@Path("/{param}")
-	public Response calling(@QueryParam("hosts") final List<String> hosts) {
+	public Response calling(@QueryParam("param") final List<String> hosts) {
  
 		logger.info("Calling report");
 		
